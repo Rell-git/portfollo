@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ICONS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+   html {
+  scroll-behavior: smooth;
+}
+
+    :root {
+      --saddle-tan: #d2b48c;
+      --phantom: #2b2b2b;
+      --dark-secret: #3a2f2f;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: var(--saddle-tan);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV BAR ===== */
+     header {
+        width: 100%;
+         height: 70px;
+         background: var(--phantom);
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding: 0 60px;
+
+        position: fixed;       /* ✅ PARA SUMUNOD */
+         top: 0;
+         left: 0;
+         z-index: 999;
+    }
+
+
+    .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--saddle-tan);
+    }
+
+    .hero {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         min-height: 90vh;
+         padding: 0 80px;
+         padding-top: 90px;  /* ✅ pang offset ng fixed menu */
+    }
+
+
+    /* LEFT CONTENT */
+    .content-left {
+      width: 50%;
+      animation: slideLeft 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    h4 {
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .hello {
+      color: white;
+    }
+
+    .iam {
+      color: var(--dark-secret);
+    }
+
+    h1 {
+      font-size: 48px;
+      color: var(--phantom);
+      margin-bottom: 10px;
+    }
+
+    .typing {
+      font-size: 18px;
+      color: var(--dark-secret);
+      margin-bottom: 20px;
+      height: 22px;
+    }
+
+    p {
+      color: white;
+      max-width: 480px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .socials a {
+      color: white;
+      font-size: 22px;
+      margin-right: 18px;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      color: var(--phantom);
+    }
+
+    /* RIGHT IMAGE */
+    .content-right {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      animation: slideRight 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    .profile-pic {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: url("formal ray.jpg") center/cover no-repeat;
+      border: 6px solid var(--phantom);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes slideLeft {
+      from {
+        transform: translateX(-120px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        transform: translateX(120px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .content-left, .content-right {
+        width: 100%;
+      }
+
+      .profile-pic {
+        margin-top: 40px;
+      }
+    }
+
+    /* ===== ABOUT SECTION ===== */
+
+.about {
+  padding: 100px 80px;
+  background: #e3c9a3;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-left {
+  width: 50%;
+  opacity: 0;
+  transform: translateX(-120px);
+  transition: 1s ease;
+}
+
+.about-right {
+  width: 40%;
+  opacity: 0;
+  transform: translateX(120px);
+  transition: 1s ease;
+}
+
+/* ✅ Lalabas lang ang animation pag nasa view na */
+.about.show .about-left,
+.about.show .about-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+.about-left h2 {
+  font-size: 38px;
+  color: var(--phantom);
+  margin-bottom: 20px;
+}
+
+.about-left p {
+  color: var(--white);
+  margin-bottom: 15px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* ===== SKILLS ===== */
+
+.about-right h3 {
+  font-size: 24px;
+  color: var(--phantom);
+  margin-bottom: 20px;
+}
+
+.skill {
+  margin-bottom: 18px;
+}
+
+.skill span {
+  font-size: 14px;
+  color: var(--phantom);
+}
+
+.bar {
+  width: 100%;
+  height: 12px;
+  background: #b5996b;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.fill {
+  height: 100%;
+  background: var(--phantom);
+  border-radius: 20px;
+  width: 0;
+  animation: fillBar 2s forwards;
+}
+
+.html { width: 70%; }
+.css { width: 25%; }
+.js { width: 15%; }
+.responsive { width: 65%; }
+
+@keyframes fillBar {
+  from { width: 0; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <div class="logo">RB</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#">Service</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+
+    <!-- LEFT -->
+    <div class="content-left">
+      <h4>
+        <span class="hello">Hello</span> 
+        <span class="iam">I am</span>
+      </h4>
+
+      <h1>Ray Blazo</h1>
+
+      <div class="typing" id="typingText">Web Developer</div>
+
+      <p>
+        I am a beginner front-end developer who is passionate about creating clean and responsive websites.
+        I enjoy learning new technologies and improving my skills every day.
+      </p>
+
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=61559166821089" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/YOURNAME" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/YOURNAME" target="_blank"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="content-right">
+      <div class="profile-pic"></div>
+    </div>
+
+  </section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="about" id="about">
+
+  <div class="about-container">
+
+    <!-- LEFT INFO -->
+    <div class="about-left">
+      <h2>About Me</h2>
+
+      <p>
+        I’m an aspiring front-end web developer dedicated to creating clean, responsive, and user-friendly digital experiences. I love exploring new technologies and consistently work on sharpening my coding skills.
+      </p>
+
+      <p>
+        I’m a beginner web developer with a growing passion for creating clean, functional, and user-friendly websites. On the front end, I’m learning to build engaging interfaces using HTML, CSS, and JavaScript. I’m also starting to explore back-end development, working with tools like Node.js and basic databases to understand how everything connects behind the scenes. As I continue learning both front-end and back-end skills, I’m excited to grow into a well-rounded full-stack developer and bring more ideas to life on the web.
+      </p>
+    </div>
+
+    <!-- RIGHT SKILLS -->
+    <div class="about-right">
+
+      <h3>My Skills</h3>
+
+      <div class="skill">
+        <span>HTML</span>
+        <div class="bar"><div class="fill html"></div></div>
+      </div>
+
+      <div class="skill">
+        <span>CSS</span>
+        <div class="bar"><div class="fill css"></div></div>
+      </div>
+
+      <div class="skill">
+        <span>JavaScript</span>
+        <div class="bar"><div class="fill js"></div></div>
+      </div>
+
+      <div class="skill">
+        <span>Responsive Design</span>
+        <div class="bar"><div class="fill responsive"></div></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+  <!-- ===== TYPING SCRIPT ===== -->
+  <script>
+  const words = ["Web Developer", "Beginner"];
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % words.length;
+    document.getElementById("typingText").textContent = words[index];
+  }, 3000);
+
+  // ✅ ABOUT SCROLL ANIMATION
+  const about = document.querySelector(".about");
+
+  window.addEventListener("scroll", () => {
+    const rect = about.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (rect < screenHeight - 150) {
+      about.classList.add("show");
+    }
+  });
+</script>
+
+</body>
+</html>
