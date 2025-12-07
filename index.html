@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio</title>
+  <title>Ray Blazo | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ICONS -->
@@ -60,9 +60,7 @@
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: var(--saddle-tan);
-    }
+    nav a:hover { color: var(--saddle-tan); }
 
     /* ===== HERO ===== */
     .hero {
@@ -215,8 +213,8 @@
     }
 
     .html { width: 70%; }
-    .css { width: 25%; }
-    .js { width: 15%; }
+    .css { width: 45%; }
+    .js { width: 30%; }
     .responsive { width: 65%; }
 
     @keyframes fillBar { from { width: 0; } }
@@ -283,6 +281,7 @@
     .service-box p { font-size: 14px; color: var(--dark-secret); line-height: 1.6; }
 
     .service-box button {
+      position: relative;
       padding: 10px 18px;
       border: none;
       border-radius: 8px;
@@ -290,12 +289,75 @@
       color: white;
       cursor: pointer;
     }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column-reverse; padding: 120px 30px 40px; }
+      .content-left, .content-right { width: 100%; }
+      .profile-pic { width: 140px; height: 140px; }
+      h1 { font-size: 32px; }
+      .about-container { flex-direction: column; gap: 40px; }
+      .about-left, .about-right { width: 100%; }
+      .services-boxes { flex-direction: column; align-items: center; }
+    }
+  
+    /* ===== ADS MODAL ===== */
+    .ads-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .ads-box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      width: 360px;
+      text-align: center;
+      position: relative;
+    }
+
+    .ads-box h3 {
+      margin-bottom: 15px;
+      color: var(--phantom);
+    }
+
+    .ads-container {
+      margin: 15px 0 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .continue-btn {
+      padding: 10px 20px;
+      border: none;
+      background: var(--phantom);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .close-ads {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #555;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">RR</div>
+    <div class="logo">RB</div>
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -303,6 +365,7 @@
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="content-left">
       <h4><span class="hello">Hello</span> <span class="iam">I am</span></h4>
@@ -310,9 +373,9 @@
       <div class="typing" id="typingText">Web Developer</div>
       <p>I am a beginner front-end developer who is passionate about creating clean and responsive websites.</p>
       <div class="socials">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61559166821089" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/YOUR_USERNAME" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/YOUR_USERNAME" target="_blank"><i class="fab fa-telegram"></i></a>
       </div>
     </div>
     <div class="content-right">
@@ -320,6 +383,23 @@
     </div>
   </section>
 
+  <!-- ADS MODAL -->
+  <div class="ads-modal" id="adsModal">
+    <div class="ads-box">
+      <span class="close-ads" onclick="closeAds()">&times;</span>
+      <h3>Advertisement</h3>
+
+      <!-- PLACE YOUR ADS SCRIPT OR IFRAME HERE -->
+      <div class="ads-container">
+        <!-- Example Placeholder -->
+        <iframe src="about:blank" title="Ads" style="width:300px;height:250px;border:1px solid #ccc;"></iframe>
+      </div>
+
+      <button class="continue-btn" onclick="goToService()">Continue to Site</button>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-container">
       <div class="about-left">
@@ -348,17 +428,52 @@
     </div>
   </section>
 
+  <!-- SERVICES -->
   <section class="services" id="services">
     <h1>Our Services</h1>
     <div class="services-boxes">
-      <div class="service-box"><h2>Portfolio Design</h2><p>We design clean and modern portfolio websites that help you showcase your skills and projects professionally.</p><button>See More</button></div>
-      <div class="service-box"><h2>Surprise Page</h2><p>We create unique and fun interactive pages perfect for surprises, greetings, or special moments.</p><button>See More</button></div>
-      <div class="service-box"><h2>Selling/Marketing</h2><p> We create simple and effective marketing pages to promote your product, brand, or business online.</p><button>See More</button></div>
+      <div class="service-box">
+        <h2>Portfolio Design"</h2>
+        <p>Clean and modern portfolio websites.</p>
+        <button onclick="showAds('portfolio.html')">See More</button>
+      </div>
+      <div class="service-box">
+        <h2>Surprise Page</h2>
+        <p>Fun interactive surprise pages.</p>
+        <button onclick="showAds('portfolio.html')">See More</button>
+      </div>
+      <div class="service-box">
+        <h2>Marketing</h2>
+        <p>Simple marketing landing pages.</p>
+        <button onclick="showAds('portfolio.html')">See More</button>
+      </div>
+      <div class="service-box">
+        <h2>Mini Web App</h2>
+        <p>Small custom websites and tools.</p>
+        <button onclick="showAds('portfolio.html')">See More</button>
+      </div>
     </div>
   </section>
 
   <script>
-    const words = ["Web Developer", "Beginner"]; let index = 0;
+    let targetLink = "";
+
+    function showAds(link) {
+      targetLink = link;
+      document.getElementById("adsModal").style.display = "flex";
+    }
+
+    function closeAds() {
+      document.getElementById("adsModal").style.display = "none";
+    }
+
+    function goToService() {
+      window.location.href = targetLink;
+    }
+
+
+    const words = ["Web Developer", "Beginner"];
+    let index = 0;
     setInterval(() => {
       index = (index + 1) % words.length;
       document.getElementById("typingText").textContent = words[index];
